@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Shipping Calculator</string>
+
+    <string name="yes">SIM</string>
+    <string name="no">NÃO</string>
+
+    <string name="select_country_lbl">Selecione o País destino:</string>
+    <string name="dangeours_lbl">Carga Perigosa:</string>
+    <string name="weight">Peso (tonelada):</string>
+    <string name="submitBtn">Calcular</string>
+    <string name="shipping_val_lbl">Valor do Frete</string>
+
+    <string-array name="country_arrays">
+        <item>Selecione</item>
+        <item>Argentina</item>
+        <item>Bolívia</item>
+        <item>Chile</item>
+        <item>México</item>
+        <item>Perú</item>
+    </string-array>
+
+</resources>

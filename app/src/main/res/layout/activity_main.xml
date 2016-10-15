@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.shippingcalculator.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_country_lbl"
+        android:id="@+id/countrylbl"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/countrySpinner"
+        android:entries="@array/country_arrays"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/countrylbl"
+        android:layout_alignEnd="@+id/btnSubmit" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submitBtn"
+        android:id="@+id/btnSubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dangeours_lbl"
+        android:id="@+id/dangeourslbl"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/value"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/dangeourslbl"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:text="@string/yes"
+            android:id="@+id/radioBtn1"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:text="@string/no"
+            android:id="@+id/radioBtn2"
+            android:checked="true" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weight"
+        android:id="@+id/weightlbl"
+        android:layout_below="@+id/countrySpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/value"
+        android:layout_below="@+id/weightlbl"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/radioGroup" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/totalValue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Valor do Frete"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/insuranceVal"
+        android:textStyle="italic"
+        android:textSize="14sp"
+        android:text="Valor do seguro"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/totalValue"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/finalValue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Valor Final"
+        android:layout_below="@+id/insuranceVal"
+        android:layout_alignStart="@+id/totalValue"
+        android:layout_marginTop="34dp" />
+
+</RelativeLayout>
