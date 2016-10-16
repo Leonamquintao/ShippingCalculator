@@ -3,6 +3,7 @@ package com.shippingcalculator;
 import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         mInsuranceVal = (TextView) findViewById(R.id.insuranceVal);
         mFinalValue = (TextView) findViewById(R.id.finalValue);
 
+        mValue.setText("0");
+
 
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,40 +58,44 @@ public class MainActivity extends AppCompatActivity {
                     peru = 145.50;
                 }
 
-                if(mValue.getText().toString().isEmpty()) {
-                    mTotalValue.setText(String.valueOf("Não foi informado um peso válido!"));
+                if(mValue.getText().toString().matches("") || mValue.getText().toString().matches("0")) {
+                    Toast.makeText(getApplicationContext(), "Informe um peso válido!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 else {
-
+                    String msg = "Frete calculado com Sucesso!";
                     if (spinnerVal.equals("Argentina")) {
                         aux = ton * argentina;
                         mTotalValue.setText(String.valueOf(aux));
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     } else if (spinnerVal.equals("Bolívia")) {
                         aux = ton * bolivia;
                         mTotalValue.setText(String.valueOf(aux));
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     } else if (spinnerVal.equals("Chile")) {
                         aux = ton * chile;
                         mTotalValue.setText(String.valueOf(aux));
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     } else if (spinnerVal.equals("México")) {
                         aux = ton * mexico;
                         mTotalValue.setText(String.valueOf(aux));
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     } else if (spinnerVal.equals("Perú")) {
                         aux = ton * peru;
                         mTotalValue.setText(String.valueOf(aux));
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     } else {
-                        mTotalValue.setText(String.valueOf("Não foi informado destino!"));
+                        Toast.makeText(getApplicationContext(), "Informe um destino vávido!", Toast.LENGTH_LONG).show();
                     }
 
                     // VALOR SEGURO ADICIONAL 10% DE ACRESCIMO
                     insurance = (aux * 0.10);
                     finalValue = (insurance)+(aux);
-                }
 
+                }
 
                 mInsuranceVal.setText(String.valueOf(insurance));
                 mFinalValue.setText(String.valueOf(finalValue));
-
-                Toast.makeText(getApplicationContext(), "Frete calculado com Sucesso!", Toast.LENGTH_LONG).show();
 
             }
         });

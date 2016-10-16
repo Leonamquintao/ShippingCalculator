@@ -102,8 +102,8 @@
         android:id="@+id/insuranceVal"
         android:textStyle="italic"
         android:textSize="14sp"
-        android:text="Valor do seguro"
-        android:layout_marginTop="25dp"
+        android:text="valor do seguro"
+        android:layout_marginTop="26dp"
         android:layout_below="@+id/totalValue"
         android:layout_centerHorizontal="true" />
 
@@ -113,9 +113,9 @@
         android:id="@+id/finalValue"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Valor Final"
+        android:text="Total do frete"
+        android:layout_marginTop="28dp"
         android:layout_below="@+id/insuranceVal"
-        android:layout_alignStart="@+id/totalValue"
-        android:layout_marginTop="34dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
