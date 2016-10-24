@@ -10,8 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Locale;
-
 public class MainActivity extends AppCompatActivity {
 
     private Spinner mCountrySpinner;
@@ -41,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
         mValue.setText("0");
         mRadiobtn2.setChecked(true);
 
-
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Double ton = Double.parseDouble(mValue.getText().toString());
-                Double aux = 0.00, insurance = 0.0, minimunValue = 150.00, finalValue = 0.0;
+                Double aux = 0.00, insurance = 0.0, countryBase = 0.0, finalValue = 0.0;
                 String spinnerVal = mCountrySpinner.getSelectedItem().toString();
 
                 Double argentina = 80.00, bolivia = 115.50, chile = 105.50, mexico = 130.75,peru = 125.50;
@@ -65,42 +62,37 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     String msg = "Frete calculado com Sucesso!";
+
                     if (spinnerVal.equals("Argentina")) {
-                        aux = ton * argentina;
-                        mTotalValue.setText(String.valueOf("R$"+aux));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        countryBase = argentina;
                     } else if (spinnerVal.equals("Bolívia")) {
-                        aux = ton * bolivia;
-                        mTotalValue.setText(String.valueOf("R$"+aux));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        countryBase = bolivia;
                     } else if (spinnerVal.equals("Chile")) {
-                        aux = ton * chile;
-                        mTotalValue.setText(String.valueOf("R$"+aux));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        countryBase = chile;
                     } else if (spinnerVal.equals("México")) {
-                        aux = ton * mexico;
-                        mTotalValue.setText(String.valueOf("R$"+aux));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        countryBase = mexico;
                     } else if (spinnerVal.equals("Perú")) {
-                        aux = ton * peru;
-                        mTotalValue.setText(String.valueOf("R$"+aux));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        countryBase = peru;
                     } else {
                         Toast.makeText(getApplicationContext(), "Informe um destino vávido!", Toast.LENGTH_LONG).show();
                     }
 
-                    // VALOR SEGURO ADICIONAL 10% DE ACRESCIMO
+                    // Calculo do frete em si
+                    aux = ton * countryBase;
+                    mTotalValue.setText(String.valueOf("R$"+aux));
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+
+                    // Valor do seguro adicional 10%
                     insurance = (aux * 0.10);
                     insurance = Math.floor(insurance * 100)/100;
                     finalValue = (insurance)+(aux);
-
                 }
 
                 mInsuranceVal.setText(String.valueOf("R$"+insurance));
                 mFinalValue.setText(String.valueOf("R$"+finalValue));
                 //valor = Double.valueOf(String.format(Locale.US, "%.2f", Math.ceil(valor)));
 
-                //TESTE DE VALOR MÍNIMO = R$150.00
+                // Teste de valor mínimo = R$150.00
                 if(finalValue < 150.00) {
                     mFinalValue.setText(String.valueOf("Valor Mínimo: R$150.00"));
                 }
